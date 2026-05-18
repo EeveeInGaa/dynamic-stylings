@@ -1,0 +1,31 @@
+{
+	"name": "dynamic-stylings",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"lint": "biome lint --write .",
+		"preview": "vite preview",
+		"format": "biome format --write .",
+		"lint-unsafe": "biome lint --write --unsafe .",
+		"check": "biome check --write ."
+	},
+	"dependencies": {
+		"react": "^19.2.6",
+		"react-dom": "^19.2.6",
+		"react-router-dom": "^7.6.0"
+	},
+	"devDependencies": {
+		"typescript": "~6.0.2",
+		"@types/node": "^24.12.3",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^6.0.1",
+		"vite": "^8.0.12",
+		"tailwindcss": "^4.2.4",
+		"@tailwindcss/vite": "^4.2.4",
+		"@biomejs/biome": "^2.4.14"
+	}
+}
