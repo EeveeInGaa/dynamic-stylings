@@ -1,0 +1,51 @@
+@reference "../../index.css";
+
+.customCursor {
+	@apply fixed left-0 top-0 z-9999 pointer-events-none;
+
+	transform: translate(
+		calc(var(--cursor-x, -100px) - 50%),
+		calc(var(--cursor-y, -100px) - 50%)
+	);
+}
+
+.cursorDot {
+	--text-cursor-transition-time: 100ms;
+	@apply h-1.5 w-1.5 rounded-full bg-text;
+
+	transition:
+		background-color var(--text-cursor-transition-time) ease-out,
+		box-shadow var(--text-cursor-transition-time) ease-out,
+		width var(--text-cursor-transition-time) ease-out,
+		height var(--text-cursor-transition-time) ease-out,
+		border-radius var(--text-cursor-transition-time) ease-out;
+
+	box-shadow:
+		0 0 6px color-mix(in oklch, var(--text) 90%, transparent),
+		0 0 14px color-mix(in oklch, var(--text) 45%, transparent),
+		0 0 28px color-mix(in oklch, var(--text) 22%, transparent);
+}
+
+.customCursor.interactive .cursorDot {
+	@apply shadow-text;
+
+	animation: cursor-pulse 1.5s ease-in-out infinite;
+}
+
+.customCursor.text .cursorDot {
+	width: 0.156rem; /* 2.5px */
+	height: 1.2rem;
+	border-radius: 999px;
+	animation: none;
+}
+
+@keyframes cursor-pulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.7);
+	}
+}

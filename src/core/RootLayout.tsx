@@ -2,6 +2,7 @@ import { Outlet, useMatches, type UIMatch } from 'react-router-dom';
 import { Header } from '@/core/Header';
 import { useEffect } from 'react';
 import { DotGridBackground } from '@/core/DotGridBackground/DotGridBackground.tsx';
+import { Cursor } from '@/core/Cursor/Cursor.tsx';
 
 type RouteHandle = {
 	title?: string;
@@ -19,6 +20,7 @@ export function RootLayout() {
 
 	return (
 		<div className="relative isolate min-h-screen">
+			<Cursor />
 			<DotGridBackground />
 			<div className="relative z-10 flex min-h-screen flex-col">
 				<Header />

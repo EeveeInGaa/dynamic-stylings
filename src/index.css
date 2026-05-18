@@ -103,8 +103,15 @@ body {
 	@apply font-sans text-text bg-background h-svh min-h-dvh w-full;
 }
 
+@media (pointer: fine) {
+	body,
+	body * {
+		cursor: none;
+	}
+}
+
 a {
-	@apply cursor-pointer hover:underline focus:underline;
+	@apply hover:underline focus:underline;
 }
 
 .custom-container {
