@@ -1,6 +1,7 @@
 import { Outlet, useMatches, type UIMatch } from 'react-router-dom';
 import { Header } from '@/core/Header';
 import { useEffect } from 'react';
+import { DotGridBackground } from '@/core/DotGridBackground/DotGridBackground.tsx';
 
 type RouteHandle = {
 	title?: string;
@@ -17,11 +18,14 @@ export function RootLayout() {
 	}, [matches]);
 
 	return (
-		<div className="flex min-h-screen flex-col">
-			<Header />
-			<main className="grow custom-container mt-lg">
-				<Outlet />
-			</main>
+		<div className="relative isolate min-h-screen">
+			<DotGridBackground />
+			<div className="relative z-10 flex min-h-screen flex-col">
+				<Header />
+				<main className="grow custom-container mt-lg">
+					<Outlet />
+				</main>
+			</div>
 		</div>
 	);
 }

@@ -1,0 +1,60 @@
+@reference "../../index.css";
+
+.dotGridBackground {
+	--cursor-x: 50;
+	--cursor-y: 50;
+	--grid-size: 45px;
+	--dot-size: 1px;
+	--highlight-size: calc(var(--dot-size) + 0.035rem);
+	--highlight-radius: 13rem; /* 208px */
+	--dot-color: color-mix(in oklch, var(--text) 22%, transparent);
+	--highlight-mask: radial-gradient(
+		var(--highlight-radius) circle at calc(var(--cursor-x) * 1px)
+			calc(var(--cursor-y) * 1px),
+		color-mix(in oklch, var(--text) 95%, transparent) 0%,
+		color-mix(in oklch, var(--text) 76%, transparent) 22%,
+		color-mix(in oklch, var(--text) 42%, transparent) 48%,
+		color-mix(in oklch, var(--text) 14%, transparent) 62%,
+		transparent 110%
+	);
+
+	@apply pointer-events-none absolute inset-0 z-0 bg-center;
+
+	background-image: radial-gradient(
+		circle,
+		var(--dot-color) var(--dot-size),
+		transparent var(--dot-size)
+	);
+	background-size: var(--grid-size) var(--grid-size);
+}
+
+.dotGridBackground::before,
+.dotGridBackground::after {
+	content: "";
+	background-size: var(--grid-size) var(--grid-size);
+	mask-image: var(--highlight-mask);
+
+	@apply absolute inset-0 bg-center;
+}
+
+/* soft glow */
+.dotGridBackground::before {
+	background-image: radial-gradient(
+		circle,
+		color-mix(in oklch, var(--info) 65%, oklch(1 0 0)) 0,
+		color-mix(in oklch, var(--info) 38%, transparent) 1.5px,
+		color-mix(in oklch, var(--info) 12%, transparent) 3px,
+		transparent 5px
+	);
+
+	@apply opacity-80 blur-[2px] mix-blend-screen;
+}
+
+/* highlighted dots */
+.dotGridBackground::after {
+	background-image: radial-gradient(
+		circle,
+		var(--info) var(--highlight-size),
+		transparent var(--highlight-size)
+	);
+}
