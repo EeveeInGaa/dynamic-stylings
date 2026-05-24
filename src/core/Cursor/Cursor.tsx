@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import styles from './Cursor.module.css';
+import { createPortal } from 'react-dom';
 
 export function Cursor() {
 	const cursorRef = useRef<HTMLDivElement>(null);
@@ -39,9 +40,10 @@ export function Cursor() {
 		};
 	}, []);
 
-	return (
+	return createPortal(
 		<div ref={cursorRef} className={styles.customCursor} aria-hidden="true">
 			<div className={styles.cursorDot} />
-		</div>
+		</div>,
+		document.body,
 	);
 }

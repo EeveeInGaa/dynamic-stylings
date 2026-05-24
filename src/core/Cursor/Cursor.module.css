@@ -1,7 +1,7 @@
 @reference "../../index.css";
 
 .customCursor {
-	@apply fixed left-0 top-0 z-9999 pointer-events-none;
+	@apply fixed left-0 top-0 z-9999 isolate pointer-events-none;
 
 	transform: translate(
 		calc(var(--cursor-x, -100px) - 50%),
